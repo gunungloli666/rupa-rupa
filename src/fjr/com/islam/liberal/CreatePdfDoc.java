@@ -20,8 +20,9 @@ import fjr.com.utils.FileUtils;
 public class CreatePdfDoc {
 	
 	public static void main(String[] args) throws IOException {
+		com.itextpdf.text.Rectangle paperSize = new com.itextpdf.text.Rectangle( 432 , 648); 
 
-	    Document document = new Document();
+	    Document document = new Document(paperSize);
 		try {
 			PdfWriter.getInstance(document, new FileOutputStream("D:/islam liberal.pdf"));
 			document.open();
@@ -38,7 +39,8 @@ public class CreatePdfDoc {
 					Font f_italic = new Font(FontFamily.TIMES_ROMAN, 12, Font.BOLDITALIC);
 					if( judul.length == 2) {
 						title = new Chunk(judul[0] + "\n" ,  f_regular); 
-						tanggal = new Chunk(judul[1] , f_italic); 
+						String tanggalBaru = judul[1].replace("|", ", ");
+						tanggal = new Chunk(tanggalBaru , f_italic); 
 					}else {
 						title = new Chunk(judul[0] + "\n" , f_regular); 
 						tanggal = new Chunk("" , f_italic); 
@@ -51,10 +53,22 @@ public class CreatePdfDoc {
 					document.add(paragraph);
 				}else {
 					if( ! baris.isEmpty()) {
+//					    Paragraph paragraph = new Paragraph(baris);
+//					    paragraph.setSpacingAfter(7f); 
+//					    paragraph.setFirstLineIndent(20f); 
+//						document.add(paragraph);
+						
+						Font f_isi = new Font(FontFamily.TIMES_ROMAN, 12, Font.NORMAL);
+						Chunk isi  = new Chunk(baris  + "\n" , f_isi); 
+						
 					    Paragraph paragraph = new Paragraph(baris);
-					    paragraph.setSpacingAfter(7f); 
+					    paragraph.setSpacingAfter(0f); 
+//					    paragraph.setFont(FontFactory.getFont(FontFactory.TIMES_ROMAN, 11f)) ;
 					    paragraph.setFirstLineIndent(20f); 
+//					    paragraph.add(isi);
+//					    paragraph.setAlignment(com.itextpdf.text.Element.ALIGN_JUSTIFIED); 
 						document.add(paragraph);
+
 					}
 				}
 			}

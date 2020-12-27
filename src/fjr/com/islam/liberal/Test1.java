@@ -17,7 +17,6 @@ public class Test1 {
 		document.open();
 		
 		Font regular = new Font(FontFamily.HELVETICA, 22);
-		
 		Font bold = new Font(FontFamily.HELVETICA, 12, Font.ITALIC);
 		Paragraph p = new Paragraph();
 		p.add(new Chunk( "andi rizki" , regular));
