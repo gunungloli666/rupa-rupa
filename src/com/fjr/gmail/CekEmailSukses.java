@@ -19,7 +19,8 @@ public class CekEmailSukses {
 		try {
 			out = new PrintWriter(new FileOutputStream( "./sukses login email.txt"  )); 
 			out1 = new PrintWriter(new FileOutputStream( "./log email cek.txt"  )); 
-			reader = new BufferedReader(new FileReader( "E:/birokrasi/lamaran kerja/CPNS 2019/kementerian hukum dan ham/no-hp-simpan.txt"   ) );
+			reader = new BufferedReader(new FileReader(
+					"E:/birokrasi/lamaran kerja/CPNS 2019/kementerian hukum dan ham/no-hp-simpan.txt"   ) );
 			String isi  ; 
 			while( (isi = reader.readLine()) != null ) {
 				String[] temp = isi.split("\\|"); 
