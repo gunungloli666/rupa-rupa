@@ -32,7 +32,6 @@ public class FileUtils {
 				}
 			}
 		}
-
 		return new String(buffer);
 	}
 }
